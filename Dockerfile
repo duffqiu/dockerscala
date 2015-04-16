@@ -7,7 +7,7 @@ RUN yum install -y wget
 # install mesos from mesosphere
 
 ENV SCALA_VERSION 2.11.5
-ENV SBT_VERSION 0.13.7
+ENV SBT_VERSION 0.13.8
 ENV SCALA_HOME /usr/share/scala
 
 # Download and install the required version of Scala
@@ -16,7 +16,6 @@ RUN yum install -y wget \
   && wget  "https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/$SBT_VERSION/sbt-launch.jar" -O /usr/local/bin/sbt-launch.jar \
   && yum install -y "scala-$SCALA_VERSION.rpm" sbt \
   && yum clean all \
-  && yum -y remove wget \
   && rm -rf "scala-$SCALA_VERSION.rpm"
 
 # Copy the SBT shell script into the image
